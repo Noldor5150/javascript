@@ -29,24 +29,107 @@
 // }      
 // while (i < repeatTimes);
 
-let firstButton = document.getElementById("click");
-firstButton.addEventListener("click", function(event){
-    document.getElementById("click").textContent = "GOTCHA";
-    console.log(event);
-  });
+// let firstButton = document.getElementById("click");
+// firstButton.addEventListener("click", function(event){
+//     document.getElementById("click").textContent = "GOTCHA";
+//     console.log(event);
+//   });
 
-  let secondButton = document.getElementById("pull");
-  secondButton.addEventListener("dblclick", function(event){
-    document.getElementById("pull").textContent = "PULLED";
-    console.log(event);
-  });
+//   let secondButton = document.getElementById("pull");
+//   secondButton.addEventListener("dblclick", function(event){
+//     document.getElementById("pull").textContent = "PULLED";
+//     console.log(event);
+//   });
 
-  let thirdButton = document.getElementById("fury");
-  thirdButton.addEventListener("mouseover", function(event){
-    event.target.style.color = "orange";
-    document.getElementById("fury").textContent = "EVILLLL";
-    var element = document.getElementById("myDiv");
-    element.classList.add("cyan");
-    console.log(event);
+//   let thirdButton = document.getElementById("fury");
+//   thirdButton.addEventListener("mouseover", function(event){
+//     event.target.style.color = "orange";
+//     document.getElementById("fury").textContent = "EVILLLL";
+//     var element = document.getElementById("myDiv");
+//     element.classList.add("cyan");
+//     console.log(event);
+// });
+
+
+function sum(firstNumber, secondNumber){
+  return firstNumber + secondNumber;
+}
+function minus(firstNumber, secondNumber){
+  return firstNumber  - secondNumber;
+}
+function division(firstNumber, secondNumber){
+  return firstNumber / secondNumber;
+}
+function multiply(firstNumber, secondNumber){
+  return firstNumber * secondNumber;
+}
+function modulus(firstNumber, secondNumber){
+  return firstNumber % secondNumber;
+}
+
+
+
+let result = document.getElementById("result");
+let firstNumber = ()=> Number(document.getElementById("firstnumber").value);
+let secondNumber = ()=> Number(document.getElementById("secondnumber").value);
+
+// let btnPlius = document.getElementById("plius");
+//     btnPlius.addEventListener("click", function(event){
+//       console .log(sum (firstNumber() , secondNumber()));
+//       document.getElementById("result").textContent = sum (firstNumber() , secondNumber());
+//     });
+
+// let btnMinus = document.getElementById("minus");
+//     btnMinus.addEventListener("click", function(event){
+//       console .log(minus (firstNumber() , secondNumber()));
+//       document.getElementById("result").textContent = minus (firstNumber() , secondNumber());
+//     });
+
+// let btnMultiply = document.getElementById("multiply");
+//     btnMultiply.addEventListener("click", function(event){
+//       console .log(multiply (firstNumber() , secondNumber()));
+//       document.getElementById("result").textContent = multiply (firstNumber() , secondNumber());
+//     });
+// let btnDivision = document.getElementById("division");
+//     btnDivision.addEventListener("click", function(event){
+//       console .log(division (firstNumber() , secondNumber()));
+//       document.getElementById("result").textContent = division (firstNumber() , secondNumber());
+//     });
+// let btnModulus = document.getElementById("mod");
+//     btnModulus.addEventListener("click", function(event){
+//       console .log(modulus (firstNumber() , secondNumber()));
+//       document.getElementById("result").textContent = modulus (firstNumber() , secondNumber());
+//     });  
+   
+let myDiv = document.getElementById("myDiv");
+
+myDiv.addEventListener("click", function(event){
+  console.log(event);
+  let elementId = event.target.id;
+  switch (elementId) {
+    case "plius":
+    document.getElementById("result").textContent =sum(firstNumber(),secondNumber());
+      break;
+    case "minus":
+    document.getElementById("result").textContent =minus(firstNumber(),secondNumber());
+      break;   
+    case "multiply":
+    document.getElementById("result").textContent =multiply(firstNumber(),secondNumber());
+      break;
+    case "division":
+    document.getElementById("result").textContent =division(firstNumber(),secondNumber());
+      break;
+    case "mod":
+    document.getElementById("result").textContent =modulus(firstNumber(),secondNumber());
+      break; 
+    case "clear":
+    document.getElementById("result").textContent = "";
+    document.getElementById("firstnumber").value = "";
+    document.getElementById("secondnumber").value = "";
+      break;      
+      
+    default:
+      break;
+  }
 });
-  
+
