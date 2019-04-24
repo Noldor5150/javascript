@@ -2,13 +2,4 @@
     display: flex;
     justify-content: space-evenly;
 }
-.cyan{
-    background-color: cyan;
-}
-.result{
-    height: 20px;
-    width: 20px;
-    background-color: black;
-    color: white;
-    font-size: 25px;
-}
+
