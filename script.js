@@ -144,64 +144,107 @@
 //   }
 // };
 
-function triangle(num) {
-  var output = "";
-  for (var i = 1; i <= num; i++) {
-    for (var j = 1; j <= i; j++) {
-      output += j + " ";
-    }
-    output += "<br/>";
-  }
-  document.getElementById("result").innerHTML = output;
+// function triangle(num) {
+//   var output = "";
+//   for (var i = 1; i <= num; i++) {
+//     for (var j = 1; j <= i; j++) {
+//       output += j + " ";
+//     }
+//     output += "<br/>";
+//   }
+//   document.getElementById("result").innerHTML = output;
+// };
+
+// let btnTriangle = document.getElementById("triangle");
+//     btnTriangle.addEventListener("click", function(event){
+//     triangle (10);
+//     });
+
+// function pyramid(n) {
+//     var src = "";
+//     var space = "&nbsp;";
+
+//   for (var i = 0; i < n; i++) {
+//     for (var j = 1; j < n-i; j++) {
+//       src += space + space;
+//     }
+//     for (var k = 1; k <= (2*i+1); k++) {
+//       src += "*" ;
+//     }
+//     src += "<br/>";
+//   }
+//   document.getElementById("result").innerHTML = src;
+// }
+
+// let btnPyramid = document.getElementById("pyramid");
+//     btnPyramid.addEventListener("click", function(event){
+//       pyramid (5);
+//     });
+
+    
+// function reversePyr(n) {
+//     var src = "";
+//     var space = "&nbsp;";
+//     var z = n + 1;
+//   for (var i = 0; i < z; i++) {
+//     src += space;
+    
+//     for (var k = 1; k <= (2*i+1); k++) {
+//       src += space;
+//     }
+//     for (var j = 1; j < z-i; j++) {
+     
+//       src += space + j + space;
+//     }
+//     src += "<br/>";
+//   }
+//   document.getElementById("result").innerHTML = src;
+// }
+
+// let btnRevPyramid = document.getElementById("reversePyr");
+//     btnRevPyramid.addEventListener("click", function(event){
+//       reversePyr (6);
+//     }); 
+function clearDiv (){
+  let div = document.getElementById("safeplace");
+  //isstrinam divo vidu, bet pats  divas lieka;
+  div.innerHTML = null;
+  
 };
 
-let btnTriangle = document.getElementById("triangle");
-    btnTriangle.addEventListener("click", function(event){
-    triangle (10);
-    });
+function paint(obj){
+  let container = document.createElement ("div");
+  let nicknameP = document.createElement ("p");
+  let nameP  = document.createElement ("p");
+  nicknameP.textContent = obj.nickName;
+  nameP.textContent = obj.name;
+  container.appendChild(nicknameP);
+  container.appendChild(nameP);
+  document.getElementById("safeplace").appendChild(container);
+};
 
-function pyramid(n) {
-    var src = "";
-    var space = "&nbsp;";
+let submitButton = document.getElementById("submit");
+submitButton.addEventListener ("click", function(event){
+ let Nickname = document.getElementById("nickname").value;
+ let Name = document.getElementById("lastname").value;
+ let credentialsObj = {nickName:Nickname,name:Name};
+ localStorage.setItem('credentials', JSON.stringify(credentialsObj));
+ clearDiv();
+ paint(credentialsObj);
+});
 
-  for (var i = 0; i < n; i++) {
-    for (var j = 1; j < n-i; j++) {
-      src += space + space;
-    }
-    for (var k = 1; k <= (2*i+1); k++) {
-      src += "*" ;
-    }
-    src += "<br/>";
-  }
-  document.getElementById("result").innerHTML = src;
-}
+window.addEventListener("load" , function(event){
+  let usersdata = JSON.parse(localStorage.getItem('credentials'));
+  document.getElementById("nickname").value = usersdata.nickName;
+  document.getElementById("lastname").value = usersdata.name;
+  paint(usersdata);
+});
 
-let btnPyramid = document.getElementById("pyramid");
-    btnPyramid.addEventListener("click", function(event){
-      pyramid (5);
-    });
+let clearButton = document.getElementById("clear");
+clearButton.addEventListener("click", function(event){
+  document.getElementById("nickname").value = "";
+  document.getElementById("lastname").value = "";
+  localStorage.clear();
+  clearDiv();
+})
 
-    
-function reversePyr(n) {
-    var src = "";
-    var space = "&nbsp;";
-    var z = n + 1;
-  for (var i = 0; i < z; i++) {
-    src += space;
-    
-    for (var k = 1; k <= (2*i+1); k++) {
-      src += space;
-    }
-    for (var j = 1; j < z-i; j++) {
-     
-      src += space + j + space;
-    }
-    src += "<br/>";
-  }
-  document.getElementById("result").innerHTML = src;
-}
-
-let btnRevPyramid = document.getElementById("reversePyr");
-    btnRevPyramid.addEventListener("click", function(event){
-      reversePyr (6);
-    });    
